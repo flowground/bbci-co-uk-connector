@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "pid": {
+            "required": true,
+            "minLength": 8,
+            "pattern": "^([0-9,a-d,f-h,j-n,p-t,v-z]){8,}$",
+            "type": "string"
+        },
+        "rights": {
+            "required": true,
+            "default": "web",
+            "enum": [
+                "mobile",
+                "tv",
+                "web"
+            ],
+            "type": "string"
+        },
+        "availability": {
+            "required": true,
+            "default": "available",
+            "enum": [
+                "all",
+                "available"
+            ],
+            "type": "string"
+        }
+    }
+}

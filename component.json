@@ -1,0 +1,559 @@
+{
+    "title": "BBC iPlayer Business Layer",
+    "description": "The definitive iPlayer API.",
+    "docsUrl": "http://smethur.st/posts/176135860",
+    "url": "https://api.apis.guru/v2/specs/bbci.co.uk/1.0/openapi.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://ibl.api.bbci.co.uk/ibl/v1",
+                    "http://ibl.api.bbci.co.uk/ibl/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_api_key": {
+                "label": "api_key (api_key)",
+                "viewClass": "TextFieldView"
+            },
+            "auth_username": {
+                "label": "Username (basic)",
+                "viewClass": "TextFieldView",
+                "note": "Used only by store purchases."
+            },
+            "auth_password": {
+                "label": "Password (basic)",
+                "viewClass": "TextFieldView",
+                "note": "Used only by store purchases."
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Get_Programmes_AtoZ_search_": {
+            "main": "./lib/actions/Get_Programmes_AtoZ_search_.js",
+            "title": "Programmes by initial title character",
+            "description": "Get the Programmes whose title begins with the given initial character.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programmes_AtoZ_search_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Categories_": {
+            "main": "./lib/actions/Get_Categories_.js",
+            "title": "Get categories",
+            "description": "Get the list of all the categories in TV & iPlayer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Categories_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Sub_categories_": {
+            "main": "./lib/actions/Get_Sub_categories_.js",
+            "title": "Get sub-categories",
+            "description": "Get sub-categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Sub_categories_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Episodes_by_category_": {
+            "main": "./lib/actions/Get_Episodes_by_category_.js",
+            "title": "List all the episodes for a category.",
+            "description": "Get the list of all the episodes for a given category in TV & iPlayer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Episodes_by_category_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Highlights_by_category_": {
+            "main": "./lib/actions/Get_Highlights_by_category_.js",
+            "title": "List the highlights for a category.",
+            "description": "Get the editorial highlights of a given category in TV & iPlayer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Highlights_by_category_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Programmes_by_category_": {
+            "main": "./lib/actions/Get_Programmes_by_category_.js",
+            "title": "List all the programmes for a category.",
+            "description": "Get the list of all the Programmes (TLEOs) for a given category in TV & iPlayer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programmes_by_category_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Channels_": {
+            "main": "./lib/actions/Get_Channels_.js",
+            "title": "List all the channels.",
+            "description": "Get the list of all the channels TV & iPlayer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Channels_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Broadcasts_by_channel_": {
+            "main": "./lib/actions/Get_Broadcasts_by_channel_.js",
+            "title": "Get broadcasts by channel",
+            "description": "Get broadcasts by channel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Broadcasts_by_channel_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Highlights_by_channel_": {
+            "main": "./lib/actions/Get_Highlights_by_channel_.js",
+            "title": "List the highlights for a channel.",
+            "description": "Get the editorial highlights of a given channel in TV & iPlayer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Highlights_by_channel_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Programmes_by_channel_": {
+            "main": "./lib/actions/Get_Programmes_by_channel_.js",
+            "title": "Get programmes by channel",
+            "description": "Get programmes by channel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programmes_by_channel_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Schedule_by_channel_": {
+            "main": "./lib/actions/Get_Schedule_by_channel_.js",
+            "title": "Get schedule by channel",
+            "description": "Get schedule by channel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Schedule_by_channel_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Clips_": {
+            "main": "./lib/actions/Get_Clips_.js",
+            "title": "Get Clips",
+            "description": "Get Clips",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Clips_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Programme_by_PID_": {
+            "main": "./lib/actions/Get_Programme_by_PID_.js",
+            "title": "Episode for a given pid.",
+            "description": "Get the episode for a given episode identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programme_by_PID_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Onward_Journey": {
+            "main": "./lib/actions/Get_Onward_Journey.js",
+            "title": "Get Onward Journey",
+            "description": "Get Onward Journey (next programme)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Onward_Journey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPostRolls": {
+            "main": "./lib/actions/getPostRolls.js",
+            "title": "Get Follow-ups (post-rolls)",
+            "description": "Get Follow-ups (post-rolls)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPostRolls.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Trailers__pre_rolls__": {
+            "main": "./lib/actions/Get_Trailers__pre_rolls__.js",
+            "title": "Get Trailers (pre-rolls)",
+            "description": "Get Trailers (pre-rolls)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Trailers__pre_rolls__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Programme_recommendations_": {
+            "main": "./lib/actions/Get_Programme_recommendations_.js",
+            "title": "Get programme recommendations",
+            "description": "Get programme recommendations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programme_recommendations_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Programmes_popular_": {
+            "main": "./lib/actions/Get_Programmes_popular_.js",
+            "title": "Get programmes popular",
+            "description": "Get programmes popular",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programmes_popular_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Episodes_by_group_": {
+            "main": "./lib/actions/Get_Episodes_by_group_.js",
+            "title": "Get episodes by group, brand or series",
+            "description": "Get episodes by group, brand or series",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Episodes_by_group_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Programme_highlights_": {
+            "main": "./lib/actions/Get_Programme_highlights_.js",
+            "title": "Get programme highlights",
+            "description": "Get programme highlights",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programme_highlights_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Programmes_by_parent_PID_": {
+            "main": "./lib/actions/Get_Programmes_by_parent_PID_.js",
+            "title": "Programme for a given pid.",
+            "description": "Get the programme for a given programme identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Programmes_by_parent_PID_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Episodes_by_parent_PID_": {
+            "main": "./lib/actions/Get_Episodes_by_parent_PID_.js",
+            "title": "Child episodes for a given programme pid.",
+            "description": "Get the child episodes belonging to a given programme identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Episodes_by_parent_PID_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Regions_": {
+            "main": "./lib/actions/Get_Regions_.js",
+            "title": "List all regions",
+            "description": "Get the list of all the regions TV & iPlayer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Regions_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Schema_": {
+            "main": "./lib/actions/Get_Schema_.js",
+            "title": "Get schema",
+            "description": "Get schema",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Schema_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Search_": {
+            "main": "./lib/actions/Search_.js",
+            "title": "Search",
+            "description": "Search",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Search_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Search_suggest_": {
+            "main": "./lib/actions/Search_suggest_.js",
+            "title": "Search-suggest",
+            "description": "Search-suggest",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Search_suggest_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_Status_": {
+            "main": "./lib/actions/Get_Status_.js",
+            "title": "Get status",
+            "description": "Get the current iPlayer business layer status. This tells the caller the status of the iPlayer data, but not necessarily the overall status of the website. In the future it might include the status of the dependent data services within the BBC.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_Status_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_User_store_purchases_": {
+            "main": "./lib/actions/Get_User_store_purchases_.js",
+            "title": "Get user store purchases",
+            "description": "Get user store purchases",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_User_store_purchases_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_User_store_recommendations_": {
+            "main": "./lib/actions/Get_User_store_recommendations_.js",
+            "title": "Get user store recommendations",
+            "description": "Get user store recommendations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_User_store_recommendations_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Get_User_watching_": {
+            "main": "./lib/actions/Get_User_watching_.js",
+            "title": "Get user watching",
+            "description": "Get user watching",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Get_User_watching_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

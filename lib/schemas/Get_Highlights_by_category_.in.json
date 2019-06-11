@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "category": {
+            "required": true,
+            "type": "string"
+        },
+        "lang": {
+            "required": true,
+            "enum": [
+                "en",
+                "cy",
+                "ga",
+                "gd",
+                "pi"
+            ],
+            "type": "string"
+        },
+        "rights": {
+            "required": true,
+            "default": "web",
+            "enum": [
+                "mobile",
+                "tv",
+                "web"
+            ],
+            "type": "string"
+        },
+        "availability": {
+            "required": true,
+            "default": "available",
+            "enum": [
+                "all",
+                "available"
+            ],
+            "type": "string"
+        },
+        "mixin": {
+            "required": false,
+            "enum": [
+                "live",
+                "promotions"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        }
+    }
+}

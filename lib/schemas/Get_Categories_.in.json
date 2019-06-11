@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "lang": {
+            "required": true,
+            "enum": [
+                "en",
+                "cy",
+                "ga",
+                "gd",
+                "pi"
+            ],
+            "type": "string"
+        }
+    }
+}

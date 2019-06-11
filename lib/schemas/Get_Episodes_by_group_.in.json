@@ -1,0 +1,70 @@
+{
+    "type": "object",
+    "properties": {
+        "pid": {
+            "required": true,
+            "minLength": 8,
+            "pattern": "^([0-9,a-d,f-h,j-n,p-t,v-z]){8,}$",
+            "type": "string"
+        },
+        "rights": {
+            "required": true,
+            "default": "web",
+            "enum": [
+                "mobile",
+                "tv",
+                "web"
+            ],
+            "type": "string"
+        },
+        "page": {
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+        },
+        "per_page": {
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+        },
+        "initial_child_count": {
+            "required": true,
+            "default": 4,
+            "maximum": 4,
+            "minimum": 1,
+            "type": "integer"
+        },
+        "sort": {
+            "required": true,
+            "type": "string"
+        },
+        "sort_direction": {
+            "required": true,
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "type": "string"
+        },
+        "availability": {
+            "required": true,
+            "default": "available",
+            "enum": [
+                "all",
+                "available"
+            ],
+            "type": "string"
+        },
+        "mixin": {
+            "required": false,
+            "enum": [
+                "live",
+                "promotions"
+            ],
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        }
+    }
+}

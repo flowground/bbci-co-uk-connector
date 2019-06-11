@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "category": {
+            "required": true,
+            "type": "string"
+        },
+        "lang": {
+            "required": true,
+            "enum": [
+                "en",
+                "cy",
+                "ga",
+                "gd",
+                "pi"
+            ],
+            "type": "string"
+        },
+        "rights": {
+            "required": true,
+            "default": "web",
+            "enum": [
+                "mobile",
+                "tv",
+                "web"
+            ],
+            "type": "string"
+        },
+        "availability": {
+            "required": true,
+            "default": "available",
+            "enum": [
+                "all",
+                "available"
+            ],
+            "type": "string"
+        },
+        "page": {
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+        },
+        "per_page": {
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+        }
+    }
+}

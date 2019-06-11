@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "identity_cookie": {
+            "required": true,
+            "format": "double",
+            "type": "number"
+        }
+    }
+}

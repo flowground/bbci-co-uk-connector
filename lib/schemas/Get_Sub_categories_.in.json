@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "category": {
+            "required": true,
+            "type": "string"
+        },
+        "lang": {
+            "required": true,
+            "enum": [
+                "en",
+                "cy",
+                "ga",
+                "gd",
+                "pi"
+            ],
+            "type": "string"
+        }
+    }
+}

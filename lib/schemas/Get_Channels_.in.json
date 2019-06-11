@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "region": {
+            "required": false,
+            "type": "string"
+        },
+        "lang": {
+            "required": true,
+            "enum": [
+                "en",
+                "cy",
+                "ga",
+                "gd",
+                "pi"
+            ],
+            "type": "string"
+        }
+    }
+}
